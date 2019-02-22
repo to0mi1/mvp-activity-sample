@@ -1,6 +1,5 @@
 package org.animato99.sampleapplication.data.source.remote
 
-import android.util.Log
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.*
@@ -31,7 +30,7 @@ class MetroDataSourceRemote(
             override fun onResponse(call: Call, response: Response) {
                 val res = response.body()?.string()
                 val info = objectMapper.readValue<List<TrainInformation>>(res, object : TypeReference<List<TrainInformation>>() {})
-                callback.onResponse()
+                callback.onResponse(info, response.code())
             }
         })
     }

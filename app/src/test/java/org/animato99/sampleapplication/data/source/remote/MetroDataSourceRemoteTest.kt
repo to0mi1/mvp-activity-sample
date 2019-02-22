@@ -1,8 +1,8 @@
 package org.animato99.sampleapplication.data.source.remote
 
+import org.animato99.sampleapplication.data.TrainInformation
 import org.animato99.sampleapplication.data.source.MetroDataSource
 import org.animato99.sampleapplication.di.appModule
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,12 +24,12 @@ class MetroDataSourceRemoteTest : AutoCloseKoinTest() {
     @Test
     fun getTrainInformation_get() {
         metroDataSourceRemote.getTrainInformation(object : MetroDataSource.GetTrainInformationCallback {
-            override fun onResponse() {
-
+            override fun onResponse(info: List<TrainInformation>, statusCode: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onFailure() {
-                fail()
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
     }

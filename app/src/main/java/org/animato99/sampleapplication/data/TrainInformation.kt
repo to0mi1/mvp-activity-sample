@@ -1,12 +1,9 @@
 package org.animato99.sampleapplication.data
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize
-import com.fasterxml.jackson.datatype.jsr310.deser.InstantDeserializer
-import com.fasterxml.jackson.datatype.jsr310.deser.key.ZonedDateTimeKeyDeserializer
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import java.util.*
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class TrainInformation(
@@ -17,20 +14,20 @@ class TrainInformation(
         @JsonProperty("@type")
         private val type: String,
         @JsonProperty("dc:date")
-        @JsonDeserialize(using = InstantDeserializer::class)
-        private val date: ZonedDateTime,
+        @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+        private val date: Date,
         @JsonProperty("dct:valid")
-        @JsonDeserialize(using = InstantDeserializer::class)
-        private val valid: ZonedDateTime,
+        @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+        private val valid: Date,
         @JsonProperty("odpt:operator")
         private val operator: String,
         @JsonProperty("odpt:timeOfOrigin")
-        @JsonDeserialize(using = InstantDeserializer::class)
-        private val timeOfOrigin: ZonedDateTime,
+        @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+        private val timeOfOrigin: Date,
         @JsonProperty("odpt:railway")
         private val railway: String,
         @JsonProperty("odpt:trainInformationStatus")
-        private val trainInformationStatus: String,
+        private val trainInformationStatus: String?,
         @JsonProperty("odpt:trainInformationText")
         private val trainInformationText: String
 )
