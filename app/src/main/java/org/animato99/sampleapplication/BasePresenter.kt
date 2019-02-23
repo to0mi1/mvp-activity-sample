@@ -1,5 +1,7 @@
 package org.animato99.sampleapplication
 
-interface BasePresenter {
-    fun start()
+interface BasePresenter<T> {
+    fun takeView(view: T)
+
+    fun dropView()
 }

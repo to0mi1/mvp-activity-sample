@@ -7,6 +7,8 @@ import okhttp3.OkHttpClient
 import org.animato99.sampleapplication.data.source.MetroDataSource
 import org.animato99.sampleapplication.data.source.MetroRepository
 import org.animato99.sampleapplication.data.source.remote.MetroDataSourceRemote
+import org.animato99.sampleapplication.informationlist.InformationListPresenter
+import org.animato99.sampleapplication.informationlist.InformationListContract
 import org.koin.dsl.module.module
 
 val appModule = module {
@@ -17,5 +19,6 @@ val appModule = module {
     }
     single { OkHttpClient() }
     single<MetroDataSource> { MetroDataSourceRemote(get()) }
-    single { MetroRepository(get()) }
+    factory { MetroRepository(get()) }
+    factory<InformationListContract.Presenter> { InformationListPresenter(get()) }
 }
